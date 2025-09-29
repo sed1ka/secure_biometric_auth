@@ -6,3 +6,4 @@ include: package:flutter_lints/flutter.yaml
 linter:
   rules:
     always_put_control_body_on_new_line false
+    public_member_api_docs true

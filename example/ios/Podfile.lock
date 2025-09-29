@@ -19,10 +19,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/secure_biometric_auth/ios"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
-  secure_biometric_auth: d52f9aec34eb49db78b40cd85c3d740c647af17e
+  secure_biometric_auth: 31fed8fb8015a97b9b0a51be138965166cd027be
 
-PODFILE CHECKSUM: 4305caec6b40dde0ae97be1573c53de1882a07e5
+PODFILE CHECKSUM: 9580a49fa2c095d51100c20f258df867100b916b
 
 COCOAPODS: 1.16.2

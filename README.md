@@ -1,16 +1,12 @@
 
 
 # secure_biometric_auth
-A Flutter plugin for secure biometric authentication with key-pair generation and challenge-based verification. Supports both registering device biometric credentials and authenticating with them, with detailed error handling.
+A flutter plugin for secure biometric authentication on iOS and Android, with key-pair generation, challenge-based verification, and detailed error handling.
 
 |             | Android | iOS   |
 |-------------|---------|-------|
 | **Support** | SDK 21+ | 15.0+ |
 
-
-> Note:
-> This plugin has not been fully tested on iOS devices.
-> Please feel free to open an issue or submit a pull request if you encounter any bugs.
 
 
 ## Features
@@ -28,8 +24,7 @@ A Flutter plugin for secure biometric authentication with key-pair generation an
 Add the dependency in your pubspec.yaml:
 ```
 dependencies:  
-secure_biometric:  
-path: ../  # if using local plugin  
+secure_biometric_auth: ^0.0.2
 ```  
 Then run:
   ```

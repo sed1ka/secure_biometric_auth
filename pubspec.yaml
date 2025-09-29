@@ -1,6 +1,6 @@
 name: secure_biometric_auth
-description: "Biometric that used for challenge sign-in support"
-version: 0.0.2
+description: "Flutter plugin for secure biometric authentication on iOS and Android, with key-pair generation, challenge-based verification, and detailed error handling."
+version: 0.0.3
 homepage: https://github.com/sed1ka/secure_biometric_auth
 
 environment:

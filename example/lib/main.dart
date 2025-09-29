@@ -54,8 +54,7 @@ class _HomeViewState extends State<HomeView> {
       if (e is SecureBiometricAuthException) {
         if (e.type == SecureBiometricAuthErrorType.biometricNoneEnrolled) {
           showSnackbar(
-            message:
-                'Please setup your biometric on device setting '
+            message: 'Please setup your biometric on device setting '
                 'to enable biometric login.',
             backgroundColor: Colors.grey,
           );
@@ -177,9 +176,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-
             const Divider(thickness: 1),
-
             Column(
               spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -197,9 +194,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-
             const Divider(thickness: 1),
-
             Column(
               spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -219,9 +214,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-
             const Divider(thickness: 1),
-
             Column(
               spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -240,7 +233,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ],
             ),
-
             Column(
               spacing: 5,
               crossAxisAlignment: CrossAxisAlignment.stretch,

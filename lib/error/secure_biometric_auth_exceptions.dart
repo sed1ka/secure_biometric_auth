@@ -40,16 +40,27 @@ enum SecureBiometricAuthErrorType {
   unknown,
 }
 
+
+/// Exception thrown by the [secure_biometric_auth] plugin
+/// when biometric authentication fails.
 class SecureBiometricAuthException implements Exception {
+  /// The type of error that occurred.
   final SecureBiometricAuthErrorType type;
+
+  /// Optional human-readable message describing the error.
   final String? message;
 
+  /// Creates a new [SecureBiometricAuthException] with [type] and optional [message].
   SecureBiometricAuthException(this.type, [this.message]);
 
   @override
   String toString() => 'BiometricException($type): $message';
 }
 
+/// Parses a [PlatformException] thrown by the platform channel
+/// and converts it into a [SecureBiometricAuthException] if possible.
+///
+/// Returns the original exception if it cannot be mapped.
 Exception parsePlatformException(Exception e) {
   if (e is PlatformException) {
     switch (e.code) {
