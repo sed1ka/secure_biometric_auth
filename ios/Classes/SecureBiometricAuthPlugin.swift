@@ -58,13 +58,23 @@ public class SecureBiometricAuthPlugin: NSObject, FlutterPlugin {
             dispatchMainAsync { result(false) }
             return
         }
+        
+        guard isSecureEnclaveAvailable() else {
+            dispatchMainAsync { result(false) }
+            return
+        }
+        
         let availability = checkBiometricAvailability(context: LAContext())
         guard availability.isSupported else {
             if let error  = availability.error as NSError? {
-                let code = error.code
-                if error is LAError, code == LAError.Code.biometryNotEnrolled.rawValue || code == LAError.passcodeNotSet.rawValue || code == LAError.biometryLockout.rawValue {
+                switch error.code {
+                case LAError.biometryNotEnrolled.rawValue,
+                    LAError.passcodeNotSet.rawValue,
+                    LAError.biometryLockout.rawValue:
                     dispatchMainAsync { result(true) }
                     return
+                default:
+                    break
                 }
             }
             dispatchMainAsync { result (false) }
@@ -72,6 +82,35 @@ public class SecureBiometricAuthPlugin: NSObject, FlutterPlugin {
         }
         
         dispatchMainAsync { result(availability.isSupported) }
+    }
+    
+    func isSecureEnclaveAvailable() -> Bool {
+        let access =
+        SecAccessControlCreateWithFlags(nil,
+                                        kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
+                                        .privateKeyUsage,
+                                        nil)
+        
+        let attributes: [String: Any] = [
+            kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+            kSecAttrKeySizeInBits as String: 256,
+            kSecAttrTokenID as String: kSecAttrTokenIDSecureEnclave,
+            kSecPrivateKeyAttrs as String: [
+                kSecAttrIsPermanent as String: false,
+                kSecAttrAccessControl as String: access as Any
+            ]
+        ]
+        
+        var error: Unmanaged<CFError>?
+        let key = SecKeyCreateRandomKey(attributes as CFDictionary, &error)
+        
+        if key != nil {
+            return true
+        }
+        
+        let nsError = (error?.takeRetainedValue()) as Error?
+        let code = (nsError as NSError?)?.code ?? 0
+        return code != errSecParam
     }
     
     func register(call: FlutterMethodCall, result: @escaping  FlutterResult) {
