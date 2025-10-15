@@ -1,5 +1,9 @@
 ## 0.0.3
 
+- Add topic and change description on pubspec.yaml
+
+## 0.0.3
+
 - Added full DartDoc to all public API
 - Minor formatting fixes
 

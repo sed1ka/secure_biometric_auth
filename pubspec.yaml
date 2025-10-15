@@ -1,6 +1,7 @@
 name: secure_biometric_auth
-description: "Flutter plugin for secure biometric authentication on iOS and Android, with key-pair generation, challenge-based verification, and detailed error handling."
-version: 0.0.3
+description: "Flutter biometric signatures with hardware-backed keys (Secure Enclave/StrongBox). Challenge signing and granular error handling."
+topics: [ biometrics, secure-enclave, strongbox, rsa, ecdsa ]
+version: 0.0.4
 homepage: https://github.com/sed1ka/secure_biometric_auth
 
 environment:
